@@ -5,24 +5,28 @@ import { FaGoogle } from "react-icons/fa";
 
 
 const SocialLogin = () => {
-    const axiosPublic = useAxiosPblic();
+    // const axiosPublic = useAxiosPblic();
     const { googleSignIn } = useAuth();
     const navigate = useNavigate()
     const handleGoogleSingIn = () =>{
         googleSignIn()
-        .then(result =>{
-            const userInfo ={
-                email: result.user?.email,
-                name: result.user?.displayName   
-           }
-           axiosPublic.post('users', userInfo)
-           .then(res =>{
-            console.log(res)
+        .then(()=>{
             navigate('/')
-           })
-        }
+        })
+        // .then(result =>{
+        //     const userInfo ={
+        //         name: result.user?.displayName,
+        //         email: result.user?.email
+                   
+        //    }
+        //    axiosPublic.post('users', userInfo)
+        //    .then(res =>{
+        //     console.log(res)
+        //     navigate('/')
+        //    })
+        // }
     
-        )
+        // )
         .catch(error=>{
             console.error(error)
         })

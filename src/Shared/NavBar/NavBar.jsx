@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const NavBar = () => {
+  
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
@@ -16,6 +17,7 @@ const NavBar = () => {
     <li><Link to="/">Home</Link></li>
     <li><Link to="/allClass">All Class</Link></li>
     <li><Link to="/teachOn">Teach On</Link></li>
+    <li><Link to="/myClass">My Class</Link></li>
 
     <li><Link to="/contactUs">Contact Us</Link></li>
 
@@ -60,12 +62,11 @@ const NavBar = () => {
               tabIndex={0}
               className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
             >
-              {/* <li><Link className=" text-black">Dashboard</Link></li> */}
               <Link
-                to='/dashboard/addclass'
+                to='/dashboard'
                 className='block px-4 py-3 hover:bg-neutral-100 transition font-semibold'
               >
-                Dashboard
+                <div>Dashboard</div>
               </Link>
               <li className='mt-2'>
                 <button onClick={handleLogOut} className='bg-gray-400 block text-center'>Logout</button>

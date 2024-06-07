@@ -3,14 +3,17 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPblic from "../Hook/useAxiosPublic";
+import SocialLogin from "../Component/SectionTitle/SocialLogin/SocialLogin";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 
 
 
 const SignUp = () => {
-  const { createUser, updateUserProfile , logOut} = useContext(AuthContext);
+  const { createUser, updateUserProfile , logOut,loading} = useContext(AuthContext);
 const navigate = useNavigate();
-  // const axiosPublic = useAxiosPblic();
+  const axiosPublic = useAxiosPblic();
 
   const { register, handleSubmit,reset, formState: { errors } } = useForm();
 
@@ -22,7 +25,6 @@ const navigate = useNavigate();
         console.log(loggedUser)
         updateUserProfile(data.name, data.photoUrl)
         .then(()=>{
-          console.log('user profile info updated')
           reset()
           Swal.fire({
             position: "top-end",
@@ -31,6 +33,8 @@ const navigate = useNavigate();
             showConfirmButton: false,
             timer: 1500
           });
+          navigate('/')
+         
           logOut()
             .then(()=>{
                 navigate('/signIn')
@@ -77,11 +81,25 @@ const navigate = useNavigate();
                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
               </label>
             </div>
-            <div className="form-control mt-6">
+            {/* <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Sign Up" />
-            </div>
+            </div> */}
+            <div>
+            <button
+              disabled={loading}
+              type='submit'
+              className='bg-blue-700 w-full rounded-md py-3 text-white'
+            >
+              {loading ? (
+                <TbFidgetSpinner className='animate-spin m-auto' />
+              ) : (
+                'Continue'
+              )}
+            </button>
+          </div>
           </form>
           <p className='text-center pb-4'><small>New Here ?</small><Link to="/signIn">Create an account</Link></p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

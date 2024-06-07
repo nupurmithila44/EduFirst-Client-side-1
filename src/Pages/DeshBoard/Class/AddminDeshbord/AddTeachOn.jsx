@@ -2,36 +2,53 @@ import { useForm } from "react-hook-form";
 import SectionTitle from "../../../../Component/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa";
 import useAuth from "../../../../Hook/useAuth";
-
+import useAxiosSecure, { axiosSecure } from "../../../../Hook/useAxiosSecure";
+import { useMutation } from "@tanstack/react-query";
 
 const AddTeachOn = () => {
+     const {user, loading} = useAuth();
+     const axiosSecure = useAxiosSecure();
+    //  const [role, isLoading] = useRole();
+
+     const {mutateAsync} = useMutation({
+        mutationFn: async techerData =>{
+            const {data}= await axiosSecure.put('/addteach', techerData)
+            return data
+        },
+        onSuccess: () => {
+            alert('susccess waitt for admin aproval')
+        }
+     })
+
+
+
     const { register, handleSubmit, reset } = useForm();
-    const {user} = useAuth()
-    console.log(user)
-     const onSubmit = async (data) => {
-        
-       console.log(data)
+     const onSubmit = async (data) => { 
+        try{
+            await mutateAsync({...data,  role: 'student', status: 'pending', photo: user?.photoURL })
+        }
+        catch (err){
+            console.log(err)
+        }
+    
+       
     }
     return (
-        <div>
+        <div className="w-2/4 mx-auto">
             <SectionTitle heading='Teach On From'></SectionTitle>
+            <div className=" w-20 outline-none sm:w-32  m-3 mx-auto  ">
+                <img className="rounded-full " src={user?.photoURL} alt="" /></div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label className="form-control w-full my-6">
                         <div className="label">
-                            <span className="label-text">Recipe Name:</span>
+                            <span className="label-text text-xl font-bold"> Name:</span>
                         </div>
                         <input type="text" placeholder="Type here"  {...register("name", { required: true })} className="input input-bordered w-full " />
-                    </label>
-                    <div className=" mb-5">
-                        <label className="label">
-                            <span className="text-xl"> photoUrl:</span>
-                        </label>
-                        <input type="text" value={user?.photoURL} {...register("photo", { required: true })} name="photo" placeholder="enter description" className="input input-bordered w-full" id="" />
-                    </div>
+                    </label>            
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-xl font-bold">Email</span>
                         </label>
                         <input type="email" value={user?.email} {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" required />
 
@@ -41,7 +58,7 @@ const AddTeachOn = () => {
             
                         <label className="form-control w-full my-6">
                             <div className="label">
-                                <span className="label-text">Create an experience </span>
+                                <span className="label-text text-xl font-bold"> Experience: </span>
                             </div>
                             <select {...register('option', { required: true })} className="select select-bordered w-full ">
                                 <option disabled selected>Select a options</option>
@@ -53,7 +70,7 @@ const AddTeachOn = () => {
                         {/* select category  */}
                         <label className="form-control w-full my-6">
                             <div className="label">
-                                <span className="label-text">Category*</span>
+                                <span className="label-text text-xl font-bold"> Category :</span>
                             </div>
                             <select {...register('category', { required: true })} className="select select-bordered w-full ">
                                 <option disabled selected>Select a category</option>
@@ -65,16 +82,12 @@ const AddTeachOn = () => {
                             </select>
                         </label>
                     </div>
+               
 
-                    {/* file input */}
-                    {/* <div className="form-control w-full my-6">
-                        <input type="file" {...register("image")} className="file-input file-input-bordered w-full max-w-xs" />
-                    </div> */}
-
-                    <button className="btn">
-                        ADD Item <FaUtensils></FaUtensils>
-
+                    <button  className="btn bg-blue-600 flex mx-auto text-white mb-10">
+                        Submit for review <FaUtensils></FaUtensils>
                     </button>
+                  
 
 
                 </form>

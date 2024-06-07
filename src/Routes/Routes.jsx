@@ -5,10 +5,14 @@ import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import ContactUs from "../Pages/ContactUs/ContactUs";
-import AddClass from "../Pages/DeshBoard/Class/AddClass"
+import AddTeachOn from "../Pages/DeshBoard/Class/AddminDeshbord/AddTeachOn";
+import MyClass from "../Pages/DeshBoard/Class/TeacherDeshbord/MyClass";
+import SeeDetails from "../Pages/DeshBoard/Class/TeacherDeshbord/SeeDetails";
+import DeshBoardLayout from "../Layout/DeshBoardLayout";
+import Profile from "../Pages/DashBord/Common/Profile";
+import AddClasses from "../Pages/DashBord/Techer/AddClasses";
+import UpdateFile from "../Pages/DashBord/Techer/UpdateFile";
 
-import DashBoard from "../Layout/DashBoard";
-import AddTeachOn from "../Pages/DeshBoard/Class/AddTeachOn/AddTeachOn";
 
 export const router = createBrowserRouter([
    {
@@ -32,6 +36,11 @@ export const router = createBrowserRouter([
             path: "/teachOn",
             element: <AddTeachOn></AddTeachOn>
          },
+        
+         {
+            path: "/tech/:id",
+            element:<SeeDetails></SeeDetails> 
+         },
          {
             path: "/contactUs",
             element: <ContactUs></ContactUs>
@@ -40,14 +49,31 @@ export const router = createBrowserRouter([
       ]
    },
    {
-      path: 'dashboard',
-      element: <DashBoard></DashBoard>,
+      path: '/dashboard',
+      element: <DeshBoardLayout></DeshBoardLayout>,
       children: [
          {
-            path: 'addclass',
-            element: <AddClass></AddClass>
+            index: true,
+            element: <Profile></Profile>
+         },
+         {
+            path: 'addClass',
+            element: <AddClasses></AddClasses>
+         },
+         {
+            path: "myClass",
+            element: <MyClass></MyClass>
+         },
+         {
+            path: 'updateFile/:id',
+            element: <UpdateFile></UpdateFile>,
+            loader: ({ params }) => fetch(`http://localhost:8000/myClass/${params.id}`)
+          },
+     
+         // teacherDeshbord
+     
 
-         }
+
       ]
    }
 ]);
