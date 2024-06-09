@@ -4,6 +4,7 @@ import { FaUtensils } from "react-icons/fa";
 import useAuth from "../../../../Hook/useAuth";
 import useAxiosSecure, { axiosSecure } from "../../../../Hook/useAxiosSecure";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from 'react-toastify';
 
 const AddTeachOn = () => {
      const {user, loading} = useAuth();
@@ -16,10 +17,11 @@ const AddTeachOn = () => {
             return data
         },
         onSuccess: () => {
-            alert('susccess waitt for admin aproval')
+            toast('success, wait for admin aproved')
+          
         }
      })
-
+     
 
 
     const { register, handleSubmit, reset } = useForm();
@@ -35,7 +37,7 @@ const AddTeachOn = () => {
     }
     return (
         <div className="w-2/4 mx-auto">
-            <SectionTitle heading='Teach On From'></SectionTitle>
+            <SectionTitle heading='Teach On From'></SectionTitle>       
             <div className=" w-20 outline-none sm:w-32  m-3 mx-auto  ">
                 <img className="rounded-full " src={user?.photoURL} alt="" /></div>
             <div>
@@ -45,7 +47,13 @@ const AddTeachOn = () => {
                             <span className="label-text text-xl font-bold"> Name:</span>
                         </div>
                         <input type="text" placeholder="Type here"  {...register("name", { required: true })} className="input input-bordered w-full " />
-                    </label>            
+                    </label>   
+                    <label className="form-control w-full my-6">
+                        <div className="label">
+                            <span className="label-text text-xl font-bold"> Title:</span>
+                        </div>
+                        <input type="title" placeholder="Type here"  {...register("title", { required: true })} className="input input-bordered w-full " />
+                    </label>          
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-xl font-bold">Email</span>

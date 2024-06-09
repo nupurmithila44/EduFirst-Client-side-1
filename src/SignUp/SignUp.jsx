@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import useAxiosPblic from "../Hook/useAxiosPublic";
 import SocialLogin from "../Component/SectionTitle/SocialLogin/SocialLogin";
 import { TbFidgetSpinner } from "react-icons/tb";
 
@@ -13,7 +12,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 const SignUp = () => {
   const { createUser, updateUserProfile , logOut,loading} = useContext(AuthContext);
 const navigate = useNavigate();
-  const axiosPublic = useAxiosPblic();
+  // const axiosPublic = useAxiosPblic();
 
   const { register, handleSubmit,reset, formState: { errors } } = useForm();
 

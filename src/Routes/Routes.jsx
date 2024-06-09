@@ -12,6 +12,11 @@ import DeshBoardLayout from "../Layout/DeshBoardLayout";
 import Profile from "../Pages/DashBord/Common/Profile";
 import AddClasses from "../Pages/DashBord/Techer/AddClasses";
 import UpdateFile from "../Pages/DashBord/Techer/UpdateFile";
+import AdminUsers from "../Pages/DashBord/Admin/AdminUsers";
+import TeacherRequst from "../Pages/DashBord/Admin/TeacherRequst";
+import AllClasses from "../Pages/DashBord/Admin/AllClasses";
+import AllClassCard from "../Pages/DashBord/Techer/AllClassCard";
+
 
 
 export const router = createBrowserRouter([
@@ -36,14 +41,18 @@ export const router = createBrowserRouter([
             path: "/teachOn",
             element: <AddTeachOn></AddTeachOn>
          },
-        
+
          {
             path: "/tech/:id",
-            element:<SeeDetails></SeeDetails> 
+            element: <SeeDetails></SeeDetails>
          },
          {
             path: "/contactUs",
             element: <ContactUs></ContactUs>
+         },
+         {
+            path: '/AllClassCard',
+            element: <AllClassCard></AllClassCard>
          }
 
       ]
@@ -56,6 +65,7 @@ export const router = createBrowserRouter([
             index: true,
             element: <Profile></Profile>
          },
+         //Techer deshbord
          {
             path: 'addClass',
             element: <AddClasses></AddClasses>
@@ -68,10 +78,28 @@ export const router = createBrowserRouter([
             path: 'updateFile/:id',
             element: <UpdateFile></UpdateFile>,
             loader: ({ params }) => fetch(`http://localhost:8000/myClass/${params.id}`)
+         },
+        
+
+         // Admin deshbored
+         {
+            path: 'allClass',
+            element: <AllClasses></AllClasses>
+         },
+         {
+            path: 'techerRequest',
+            element:<TeacherRequst></TeacherRequst>
           },
-     
-         // teacherDeshbord
-     
+         {
+            path: 'adminUsers',
+            element: <AdminUsers></AdminUsers>
+         },
+         {
+            path: 'profile',
+            element: <Profile></Profile>
+         },
+        
+
 
 
       ]

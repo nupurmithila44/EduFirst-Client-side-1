@@ -15,7 +15,7 @@ const NavBar = () => {
 
   const navMenu = <>
     <li><Link to="/">Home</Link></li>
-    <li><Link to="/allClass">All Class</Link></li>
+    <li><Link to="/AllClassCard">All Class</Link></li>
     <li><Link to="/teachOn">Teach On</Link></li>
     <li><Link to="/myClass">My Class</Link></li>
 
