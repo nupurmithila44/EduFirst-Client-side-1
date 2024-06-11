@@ -35,11 +35,11 @@ const MyCardClass = ({ tech, refetch }) => {
                 <p>{tech.description}</p>
                 <p className="text-bold text-sm text-green-500">category Level: {tech.category}</p>
                 <div className="flex justify-between">
-                    <p className="font-bold">Date Posted : {tech.price}</p>
+                    <p className="font-bold">Price: {tech.price}</p>
                     <p className="font-bold">Mark: {tech.status}</p>
                 </div>
                 <div className="card-actions">
-                    <Link to={`/tech/${tech._id}`} ><button className="btn btn-success">See</button></Link>
+                    <Link to={`/tech/${tech._id}`} ><button disabled={tech?.status !== 'approved'} className="btn btn-success">See Details</button></Link>
                     <Link to={`/dashboard/updateFile/${tech._id}`}><button className="btn btn-success"> update </button></Link>
                     <button onClick={() => { handleDelate(tech) }} className="btn btn-error">delete</button>
                 </div>

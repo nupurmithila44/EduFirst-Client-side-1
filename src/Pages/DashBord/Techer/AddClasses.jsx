@@ -12,6 +12,7 @@ const image_host_api=`https://api.imgbb.com/1/upload?key=${image_host_key}`
 
 const AddClasses = () => {
     const {user} = useAuth();
+   
   
     const { register, handleSubmit, reset } = useForm();
     const axiosSecure = useAxiosSecure();
@@ -43,9 +44,11 @@ const AddClasses = () => {
                 name: data.name,
                 email: data.email,
                 image: res.data.data.display_url,
+                enrollment : parseFloat(data.enrollment),
                 description: data.description,
                 status : 'pending',
-                techer: techer
+                techer: techer,
+               
                
             }
             const postClass = await axiosSecure.post('/class', addClass);
@@ -96,7 +99,7 @@ const AddClasses = () => {
                             <label className="label">
                                 <span className="text-xl"> Name :</span>
                             </label>
-                            <input type="text"  {...register("name", { required: true })} name="name" placeholder="enter Name" className="input input-bordered w-full" id="" />
+                            <input type="text" defaultValue={user?.displayName} {...register("name", { required: true })} name="name" placeholder="enter Name" className="input input-bordered w-full" id="" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -123,6 +126,12 @@ const AddClasses = () => {
                                 <span className="text-xl"> photoUrl:</span>
                             </label>
                             <input type="file"  {...register("image")} name="image" placeholder="enter description" className="input input-bordered w-full" id="" />
+                        </div>
+                        <div className=" mb-5">
+                            <label className="label">
+                                <span className="text-xl"> Total Enrollment:</span>
+                            </label>
+                            <input type="number"  {...register("enrollment")} name="enrollment" placeholder=" total enrollment" className="input input-bordered w-full" id="" />
                         </div>
                         {/* img mark  */}
                         <div>

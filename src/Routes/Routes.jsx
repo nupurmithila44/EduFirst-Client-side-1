@@ -16,6 +16,10 @@ import AdminUsers from "../Pages/DashBord/Admin/AdminUsers";
 import TeacherRequst from "../Pages/DashBord/Admin/TeacherRequst";
 import AllClasses from "../Pages/DashBord/Admin/AllClasses";
 import AllClassCard from "../Pages/DashBord/Techer/AllClassCard";
+import MyEnrollClass from "../Pages/DashBord/Student/MyEnrollClass";
+import AllClassDetails from "../Pages/DashBord/Techer/AllClassDetails";
+import Payment from "../Pages/DashBord/Techer/Payment/Payment";
+import EnrollClassDetails from "../Pages/DashBord/Student/EnrollClassDetails";
 
 
 
@@ -53,6 +57,16 @@ export const router = createBrowserRouter([
          {
             path: '/AllClassCard',
             element: <AllClassCard></AllClassCard>
+         },
+         {
+            path: '/allClassDetails/:id',
+            element: <AllClassDetails></AllClassDetails>,
+            loader : ({params}) => fetch(`http://localhost:8000/allClassCard/${params.id}`)
+         },
+         {
+            path: '/payment/:id',
+            element: <Payment></Payment>,
+            loader : ({params}) => fetch(`http://localhost:8000/payment/${params.id}`)
          }
 
       ]
@@ -98,6 +112,16 @@ export const router = createBrowserRouter([
             path: 'profile',
             element: <Profile></Profile>
          },
+
+         // student deshbored
+         {
+           path: 'myClassEnroll',
+           element: <MyEnrollClass></MyEnrollClass>
+         },
+         {
+           path: 'enrollDetails/:id',
+            element: <EnrollClassDetails></EnrollClassDetails>
+         }
         
 
 

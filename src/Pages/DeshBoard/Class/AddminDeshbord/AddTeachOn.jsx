@@ -61,6 +61,7 @@ const AddTeachOn = () => {
                         <input type="email" value={user?.email} {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" required />
 
                     </div>
+                 
                     <div className="flex gap-5">
                         {/* select  */}
             
