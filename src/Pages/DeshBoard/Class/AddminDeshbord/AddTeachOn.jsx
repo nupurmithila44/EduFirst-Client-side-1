@@ -46,7 +46,7 @@ const AddTeachOn = () => {
                         <div className="label">
                             <span className="label-text text-xl font-bold"> Name:</span>
                         </div>
-                        <input type="text" placeholder="Type here"  {...register("name", { required: true })} className="input input-bordered w-full " />
+                        <input type="text" defaultValue={user?.displayName} placeholder="Type here"  {...register("name", { required: true })} className="input input-bordered w-full " />
                     </label>   
                     <label className="form-control w-full my-6">
                         <div className="label">

@@ -71,14 +71,14 @@ const Sidebar = () => {
             <nav>
               {/*  Menu Items */}
             
-        
+              <ClassItem label='profile' address='/dashboard/profile' icon={CgProfile }></ClassItem>
 
               {role === 'student' && <StudentMenu></StudentMenu>}
               {role === 'techer' && <TeacherMenu></TeacherMenu>}
            
               {role === 'admin' && <AdminMenu></AdminMenu>}
 
-              <ClassItem label='profile' address='/dashboard/profile' icon={CgProfile }></ClassItem>
+              
            
            
             </nav>

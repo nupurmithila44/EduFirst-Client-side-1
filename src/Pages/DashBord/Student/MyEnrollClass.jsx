@@ -21,7 +21,6 @@ const MyEnrollClass = () => {
 
     return (
         <div>
-         <h1>{myClassEnroll.length}</h1>
             <SectionTitle heading='My Enroll Class'> </SectionTitle>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {
@@ -35,13 +34,12 @@ const MyEnrollClass = () => {
                           <h2 className="card-title"> Techer Name: {myClassEnrolls.name}
                           </h2>      
                           <div className="card-actions w-full ">
-                            <Link to={`/dashboard/enrollDetails/${myClassEnrolls._id}`}><button className="btn bg-gray-300 w-1/3  mx-auto mt-4">Continue</button></Link>
+                            <Link to={`/dashboard/enrollDetails/${myClassEnrolls._id}`}><button className="btn bg-gray-300 w-full  mx-auto mt-4">Continue</button></Link>
                           </div>
                         </div>
                       </div>)
                 }
             </div>
-           <h1>my Enroll className</h1> 
         </div>
     );
 };

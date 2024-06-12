@@ -17,8 +17,6 @@ const NavBar = () => {
     <li><Link to="/">Home</Link></li>
     <li><Link to="/AllClassCard">All Class</Link></li>
     <li><Link to="/teachOn">Teach On</Link></li>
-    <li><Link to="/myClass">My Class</Link></li>
-
     <li><Link to="/contactUs">Contact Us</Link></li>
 
   </>
@@ -66,10 +64,10 @@ const NavBar = () => {
                 to='/dashboard'
                 className='block px-4 py-3 hover:bg-neutral-100 transition font-semibold'
               >
-                <div>Dashboard</div>
+                <div className="text-black">Dashboard</div>
               </Link>
               <li className='mt-2'>
-                <button onClick={handleLogOut} className='bg-gray-400 block text-center'>Logout</button>
+                <button onClick={handleLogOut} className='bg-gray-400 block text-center text-black'>Logout</button>
               </li>
             </ul>
           </div> : <>

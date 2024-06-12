@@ -61,12 +61,12 @@ export const router = createBrowserRouter([
          {
             path: '/allClassDetails/:id',
             element: <AllClassDetails></AllClassDetails>,
-            loader : ({params}) => fetch(`http://localhost:8000/allClassCard/${params.id}`)
+            loader : ({params}) => fetch(`https://edu-first-server-side.vercel.app/allClassCard/${params.id}`)
          },
          {
             path: '/payment/:id',
             element: <Payment></Payment>,
-            loader : ({params}) => fetch(`http://localhost:8000/payment/${params.id}`)
+            loader : ({params}) => fetch(`https://edu-first-server-side.vercel.app/payment/${params.id}`)
          }
 
       ]
@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
          {
             path: 'updateFile/:id',
             element: <UpdateFile></UpdateFile>,
-            loader: ({ params }) => fetch(`http://localhost:8000/myClass/${params.id}`)
+            loader: () => fetch(`https://edu-first-server-side.vercel.app/myClass`)
          },
         
 

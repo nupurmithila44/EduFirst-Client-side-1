@@ -39,7 +39,9 @@ const EnrollClassDetails = () => {
             description,
             rating,
             email: user.email,
-            image: user.photoURL
+            image: user.photoURL,
+            name : user.displayName
+
         }
         console.log(teReport);
         const res = await axiosSecure.put(`/teReport`, teReport);    

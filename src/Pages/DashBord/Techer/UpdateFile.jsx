@@ -3,14 +3,16 @@ import useAuth from "../../../Hook/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAxiosPblic from "../../../Hook/useAxiosPublic";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 const image_host_key=import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_host_api=`https://api.imgbb.com/1/upload?key=${image_host_key}`
 const UpdateFile = () => {
     
-    const loderData = useLoaderData();
-    console.log(loderData)
+    const loaderData = useLoaderData();
+    // const {id} = useParams()
+    // const myClassdata =classData.find(loader => loader._id === id)
+    // console.log(myClassdata)
     
     const {user} = useAuth();
   
