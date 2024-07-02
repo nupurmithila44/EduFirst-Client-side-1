@@ -18,4 +18,11 @@ Admin_pass: 123456As
 - [https://edufirst-client-side.netlify.app/](https://edufirst-client-side.netlify.app/)
 
 # Project technology
+. Firebase
+. mongodb
+. React
+. Tailwind css
+. css
+. daisyUI
+
 
