@@ -15,4 +15,7 @@ Admin_pass: 123456As
 . etc.....
 
 # Website Live Link
-- [https://edufirst-client-side.netlify.app/](https://edufirst-client-side.netlify.app/) 
+- [https://edufirst-client-side.netlify.app/](https://edufirst-client-side.netlify.app/)
+
+# Project technology
+
